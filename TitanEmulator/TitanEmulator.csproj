@@ -63,6 +63,7 @@
     <Compile Include="instructions\AndInstruction.cs" />
     <Compile Include="instructions\ClrInstruction.cs" />
     <Compile Include="instructions\Instruction.cs" />
+    <Compile Include="instructions\JmpInstruction.cs" />
     <Compile Include="instructions\LdcInstruction.cs" />
     <Compile Include="instructions\LorInstruction.cs" />
     <Compile Include="instructions\MovInstruction.cs" />

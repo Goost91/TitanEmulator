@@ -59,6 +59,7 @@ namespace TitanEmulator {
             interpreter.reset();
             timer1.Stop();
             sv.reset();
+            csv.reset();
             UpdateRegisterViews();
         }
 
@@ -104,17 +105,7 @@ namespace TitanEmulator {
         }
 
         private void menuStrip1_SizeChanged(object sender, EventArgs e) {
-            switch (WindowState) {
-                case FormWindowState.Normal:
-                case FormWindowState.Maximized:
-                    sv.Show();
-                    csv.Show();
-                    break;
-                case FormWindowState.Minimized:
-                    sv.Hide();
-                    csv.Hide();
-                    break;
-            }
+            
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -136,6 +127,10 @@ namespace TitanEmulator {
         private void toolStripComboBox1_Click(object sender, EventArgs e)
         {
             csv.Show();
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e) {
+
         }
 
 

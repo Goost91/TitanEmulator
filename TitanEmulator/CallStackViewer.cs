@@ -30,10 +30,10 @@ namespace TitanEmulator
             Hide();
             e.Cancel = true;
         }
-        public void reset()
-        {
 
+        public void reset() {
             dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
         }
 
         private void StackViewer_SizeChanged(object sender, EventArgs e) {

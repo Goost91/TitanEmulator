@@ -12,6 +12,9 @@ namespace TitanEmulator.instructions {
 
         public virtual void execute(MachineState ms, byte[] parameters) {
         }
+        public virtual int execute(MachineState ms, byte[] parameters, int pc) {
+            return 0;
+        }
 
         public virtual bool accept(int opc, int cnd) {
             return opcode == opc && cond == cnd;

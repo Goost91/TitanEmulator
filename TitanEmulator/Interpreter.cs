@@ -25,7 +25,7 @@ namespace TitanEmulator {
             List<byte> result = new List<byte>();
             for (int i = 0; i < instructions.Length - 1; i += 2) {
                 string chr = instructions.Substring(i, 2);
-                if(chr.IndexOf('\n') > 0|| chr.IndexOf('\r') > 0) continue;
+                if (chr.IndexOf('\n') > 0 || chr.IndexOf('\r') > 0) continue;
                 string substring = string.Format("{0:X}", chr);
                 uint num = uint.Parse(substring, System.Globalization.NumberStyles.AllowHexSpecifier);
 
@@ -56,8 +56,7 @@ namespace TitanEmulator {
         }
 
         public void executeInstruction(Instruction instr) {
-            if(instr == null)
-            {
+            if (instr == null) {
                 Console.WriteLine("Non-existant instruction; skipping");
                 programCounter++;
                 return;
@@ -67,8 +66,13 @@ namespace TitanEmulator {
                 operands.Add(readHighNibble(assembly[programCounter + i]));
                 operands.Add(readLowNibble(assembly[programCounter + i]));
             }
-            instr.execute(ms, operands.ToArray());
-            programCounter += currentInstruction.length;
+            if (instr.opcode != 0xA) {
+                instr.execute(ms, operands.ToArray());
+                programCounter += currentInstruction.length;
+            } else {
+                programCounter = instr.execute(ms, operands.ToArray(), programCounter);
+
+            }
         }
 
         public Interpreter() {
@@ -87,11 +91,13 @@ namespace TitanEmulator {
             instructions.Add(new XchInstruction());
             instructions.Add(new LdcInstruction());
             instructions.Add(new NopInstruction());
+            instructions.Add(new JmpInstruction());
         }
 
         public void reset() {
             ms.reset();
             programCounter = 0;
+            
             //loadAssembly();
             first = true;
         }

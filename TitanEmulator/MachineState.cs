@@ -7,7 +7,7 @@ namespace TitanEmulator {
     public class MachineState {
         public List<Register> registers = new List<Register>(16);
         public Dictionary<string, int> flags = new Dictionary<string, int>();
-        public Stack<byte> callStack = new Stack<byte>();
+        public Stack<int> callStack = new Stack<int>();
         public Stack<int> stack = new Stack<int>();
         public int[] memory = new int[0xFFFF];
 
@@ -18,6 +18,8 @@ namespace TitanEmulator {
         public void reset() {
             registers.Clear();
             flags.Clear();
+            callStack.Clear();
+            stack.Clear();
             for (int i = 0; i < 16; i++) {
                 string reg = i.ToString("X");
                 registers.Add(new Register("R" + reg, i, i));
