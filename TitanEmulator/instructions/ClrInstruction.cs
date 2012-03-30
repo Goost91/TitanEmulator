@@ -5,6 +5,7 @@ namespace TitanEmulator.instructions
         public ClrInstruction() {
             opcode = 0x6;
             //cond = 0x1;
+            //hello
             name = "CLR";
             length = 1;
         }
