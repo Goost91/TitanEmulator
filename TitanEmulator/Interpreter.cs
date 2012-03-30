@@ -42,7 +42,7 @@ namespace TitanEmulator {
         public Instruction decodeInstruction() {
             int high = readHighNibble(assembly[programCounter]);
             int low = readLowNibble(assembly[programCounter]);
-            Instruction ins = instructions.Where(instr => instr.accept(high, low)).FirstOrDefault();
+            Instruction ins = instructions.FirstOrDefault(instr => instr.accept(high, low));
             currentInstruction = ins ?? new Instruction();
             return ins;
         }
