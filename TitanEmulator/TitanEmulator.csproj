@@ -64,6 +64,11 @@
     <Compile Include="instructions\ClrInstruction.cs" />
     <Compile Include="instructions\Instruction.cs" />
     <Compile Include="instructions\JmpInstruction.cs" />
+    <Compile Include="instructions\JpcInstruction.cs" />
+    <Compile Include="instructions\JpiInstruction.cs" />
+    <Compile Include="instructions\JpsInstruction.cs" />
+    <Compile Include="instructions\JpzInstruction.cs" />
+    <Compile Include="instructions\JsrInstruction.cs" />
     <Compile Include="instructions\LdcInstruction.cs" />
     <Compile Include="instructions\LorInstruction.cs" />
     <Compile Include="instructions\MovInstruction.cs" />
@@ -71,6 +76,7 @@
     <Compile Include="instructions\NotInstruction.cs" />
     <Compile Include="instructions\PopInstruction.cs" />
     <Compile Include="instructions\PshInstruction.cs" />
+    <Compile Include="instructions\RtnInstruction.cs" />
     <Compile Include="instructions\ShrInstruction.cs" />
     <Compile Include="instructions\SubInstruction.cs" />
     <Compile Include="instructions\XchInstruction.cs" />

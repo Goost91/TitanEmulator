@@ -52,7 +52,13 @@ namespace TitanEmulator {
         private void button1_Click(object sender, EventArgs e) {
             if (!textBox1.Text.Equals(""))
                 interpreter.loadAssembly(textBox1.Text);
-            timer1.Start();
+            if (button1.Text.Equals("Run")) {
+                timer1.Start();
+                button1.Text = "Stop";
+            } else if(button1.Text.Equals("Stop")) {
+                timer1.Stop();
+                button1.Text = "Run";
+            }
         }
 
         private void button3_Click(object sender, EventArgs e) {
