@@ -19,6 +19,8 @@ namespace TitanEmulator {
             textBox1.Text = interpreter.assemblyString;
             sv = new StackViewer();
             csv = new CallStackViewer();
+            csv.setMachineState(interpreter.ms);
+            sv.setMachineState(interpreter.ms);
             UpdateRegisterViews();
             openFileDialog1.Filter = "Titan Assemblies (*.hex)|*.hex";
         }
@@ -35,7 +37,6 @@ namespace TitanEmulator {
             }
             // fetch instruction
             interpreter.fetchNextInstruction(); 
-            UpdateRegisterViews();
             // decode instruction
             Instruction ins = interpreter.decodeInstruction();
             UpdateRegisterViews();
@@ -55,10 +56,14 @@ namespace TitanEmulator {
                 interpreter.loadAssembly(textBox1.Text);
             if (button1.Text.Equals("Run")) {
                 timer1.Start();
+                csv.update(interpreter.ms);
+                sv.update(interpreter.ms);
                 button1.Text = "Stop";
             } else if(button1.Text.Equals("Stop")) {
                 timer1.Stop();
                 button1.Text = "Run";
+                csv.timer1.Stop();
+                sv.timer1.Stop();
             }
         }
 
@@ -93,9 +98,9 @@ namespace TitanEmulator {
             tbZ.Text = (interpreter.ms.flags["Z"]).ToString();
             stackHeightLbl.Text = string.Format("Stack height: {0}", interpreter.ms.stack.Count);
             callStackLbl.Text = string.Format("Call stack height: {0}", interpreter.ms.callStack.Count);
-            currentInstructionLbl.Text = string.Format("Current Instruction: {0}", interpreter.currentInstruction.name);
-            sv.update(interpreter.ms);
-            csv.update(interpreter.ms);
+            currentInstructionLbl.Text = string.Format("Current Instruction: {0}   {1}", interpreter.currentInstruction.name, sv.Visible);
+            
+            
         }
 
         private void stackViewerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -145,20 +150,26 @@ namespace TitanEmulator {
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e) {
-         /*   char[] validKeys = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', ' ' };
-            if (!validKeys.Contains((char)e.KeyValue)) {
-                e.Handled = true;
-            }*/
+            if(e.Control) {
+                Keys k = e.KeyCode;
+                if (k != Keys.V && k != Keys.C && k != Keys.X)
+                    e.Handled = true;
+            }
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e) {
-            if (!isValidAssemblyChar(e.KeyChar))
+            
+            if (!isValidAssemblyChar(e.KeyChar) && !char.IsControl(e.KeyChar))
                 e.Handled = true;
         }
 
 
         public static bool isValidAssemblyChar(char c) {
             return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F') || c == ' ';
+        }
+
+        private void memoryViewerToolStripMenuItem_Click(object sender, EventArgs e) {
+
         }
 
 

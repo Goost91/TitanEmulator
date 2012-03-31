@@ -9,18 +9,26 @@ using System.Windows.Forms;
 
 namespace TitanEmulator {
     public partial class StackViewer : Form {
+        private MachineState ms;
+        private int updateCounter = 0;
         public StackViewer() {
             InitializeComponent();
             TopMost = true;
         }
 
         public void update(MachineState ms) {
-            reset();
-            int i = 0;
-            foreach (int value in ms.stack) {
-                string[] row = { i.ToString(), value.ToString() };
-                dataGridView1.Rows.Add(row);
-                ++i;
+            if (!timer1.Enabled && Visible) timer1.Start();
+            if (updateCounter++ >= 15) {
+                reset();
+                int i = 0;
+                foreach (int value in ms.stack) {
+                    string[] row = { string.Format("{0:X}", i).PadLeft(4, '0'), string.Format("{0:X}", value).PadLeft(4, '0') };
+                    dataGridView1.Rows.Add(row);
+
+                    ++i;
+                    updateCounter = 0;
+
+                }
             }
         }
 
@@ -36,7 +44,6 @@ namespace TitanEmulator {
         }
         public void reset()
         {
-
             dataGridView1.Rows.Clear();
         }
 
@@ -51,6 +58,15 @@ namespace TitanEmulator {
                     TopMost = false;
                     break;
             }
+        }
+
+        public void setMachineState(MachineState machineState) {
+            ms = machineState;
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e) {
+            update(ms);
         }
 
     }

@@ -144,6 +144,7 @@
             this.memoryViewerToolStripMenuItem.Name = "memoryViewerToolStripMenuItem";
             this.memoryViewerToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.memoryViewerToolStripMenuItem.Text = "Memory viewer";
+            this.memoryViewerToolStripMenuItem.Click += new System.EventHandler(this.memoryViewerToolStripMenuItem_Click);
             // 
             // stackViewerToolStripMenuItem
             // 
