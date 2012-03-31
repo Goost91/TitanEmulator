@@ -9,7 +9,8 @@ namespace TitanEmulator.instructions {
         }
 
         public override int execute(MachineState ms, byte[] parameters, int pc) {
-            return ms.callStack.Pop() + 1;
+            
+            return ms.stack.Pop() + 3;
         }
         public override bool accept(int opc, int cnd) {
             return opcode == opc && cond == cnd;

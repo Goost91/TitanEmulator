@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CallStackViewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CallStackViewer.Designer.cs">
-      <DependentUpon>CallStackViewer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,9 +86,6 @@
     <Compile Include="StackViewer.Designer.cs">
       <DependentUpon>StackViewer.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CallStackViewer.resx">
-      <DependentUpon>CallStackViewer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

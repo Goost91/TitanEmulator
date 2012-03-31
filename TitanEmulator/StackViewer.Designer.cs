@@ -24,8 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,8 +50,8 @@
             // Index
             // 
             this.Index.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Index.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Index.DefaultCellStyle = dataGridViewCellStyle1;
             this.Index.Frozen = true;
             this.Index.HeaderText = "Index";
             this.Index.MinimumWidth = 50;
@@ -63,8 +63,8 @@
             // Value
             // 
             this.Value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Value.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Value.DefaultCellStyle = dataGridViewCellStyle2;
             this.Value.HeaderText = "Value";
             this.Value.MinimumWidth = 75;
             this.Value.Name = "Value";
@@ -82,7 +82,7 @@
             this.ClientSize = new System.Drawing.Size(151, 268);
             this.Controls.Add(this.dataGridView1);
             this.Name = "StackViewer";
-            this.Text = "StackViewer";
+            this.Text = "Stack Viewer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StackViewer_FormClosing);
             this.SizeChanged += new System.EventHandler(this.StackViewer_SizeChanged);
             this.Resize += new System.EventHandler(this.StackViewer_Resize);

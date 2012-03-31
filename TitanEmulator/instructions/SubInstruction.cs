@@ -9,8 +9,13 @@ namespace TitanEmulator.instructions {
         }
 
         public override void execute(MachineState ms, byte[] parameters) {
-            int res = ms.registers[parameters[0]].value - ms.registers[parameters[1]].value;
+            int res = ms.registers[parameters[1]].value - ms.registers[parameters[0]].value;
+            if(res < 0) {
+                res = 0xFF - (res + 1) & 0xFF;
+            }
             ms.registers[parameters[1]].value = res;
+            ms.flags["C"] = res > 255 ? 1 : 0;
+            ms.flags["S"] = res >> 4 > 0x8 ? 1 : 0;
             ms.flags["Z"] = res == 0 ? 1 : 0;
         }
     }

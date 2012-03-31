@@ -12,14 +12,11 @@ namespace TitanEmulator {
     public partial class Form1 : Form {
         Interpreter interpreter = new Interpreter();
         StackViewer sv;
-        CallStackViewer csv;
         public Form1() {
             InitializeComponent();
             interpreter.loadAssembly();
             textBox1.Text = interpreter.assemblyString;
             sv = new StackViewer();
-            csv = new CallStackViewer();
-            csv.setMachineState(interpreter.ms);
             sv.setMachineState(interpreter.ms);
             UpdateRegisterViews();
             openFileDialog1.Filter = "Titan Assemblies (*.hex)|*.hex";
@@ -56,13 +53,11 @@ namespace TitanEmulator {
                 interpreter.loadAssembly(textBox1.Text);
             if (button1.Text.Equals("Run")) {
                 timer1.Start();
-                csv.update(interpreter.ms);
                 sv.update(interpreter.ms);
                 button1.Text = "Stop";
             } else if(button1.Text.Equals("Stop")) {
                 timer1.Stop();
                 button1.Text = "Run";
-                csv.timer1.Stop();
                 sv.timer1.Stop();
             }
         }
@@ -71,36 +66,32 @@ namespace TitanEmulator {
             interpreter.reset();
             timer1.Stop();
             sv.reset();
-            csv.reset();
             UpdateRegisterViews();
         }
 
         private void UpdateRegisterViews() {
-            tbR0.Text = interpreter.ms.registers[0].value.ToString();
-            tbR1.Text = interpreter.ms.registers[1].value.ToString();
-            tbR2.Text = interpreter.ms.registers[2].value.ToString();
-            tbR3.Text = interpreter.ms.registers[3].value.ToString();
-            tbR4.Text = interpreter.ms.registers[4].value.ToString();
-            tbR5.Text = interpreter.ms.registers[5].value.ToString();
-            tbR6.Text = interpreter.ms.registers[6].value.ToString();
-            tbR7.Text = interpreter.ms.registers[7].value.ToString();
-            tbR8.Text = interpreter.ms.registers[8].value.ToString();
-            tbR9.Text = interpreter.ms.registers[9].value.ToString();
-            tbRA.Text = interpreter.ms.registers[10].value.ToString();
-            tbRB.Text = interpreter.ms.registers[11].value.ToString();
-            tbRC.Text = interpreter.ms.registers[12].value.ToString();
-            tbRD.Text = interpreter.ms.registers[13].value.ToString();
-            tbRE.Text = interpreter.ms.registers[14].value.ToString();
-            tbRF.Text = interpreter.ms.registers[15].value.ToString();
-            tbPC.Text = (interpreter.programCounter).ToString();
-            tbC.Text = (interpreter.ms.flags["C"]).ToString();
-            tbS.Text = (interpreter.ms.flags["S"]).ToString();
-            tbZ.Text = (interpreter.ms.flags["Z"]).ToString();
+            tbR0.Text = string.Format("{0:X}",interpreter.ms.registers[0].value).PadLeft(2, '0');
+            tbR1.Text = string.Format("{0:X}",interpreter.ms.registers[1].value).PadLeft(2, '0');
+            tbR2.Text = string.Format("{0:X}",interpreter.ms.registers[2].value).PadLeft(2, '0');
+            tbR3.Text = string.Format("{0:X}",interpreter.ms.registers[3].value).PadLeft(2, '0');
+            tbR4.Text = string.Format("{0:X}",interpreter.ms.registers[4].value).PadLeft(2, '0');
+            tbR5.Text = string.Format("{0:X}",interpreter.ms.registers[5].value).PadLeft(2, '0');
+            tbR6.Text = string.Format("{0:X}",interpreter.ms.registers[6].value).PadLeft(2, '0');
+            tbR7.Text = string.Format("{0:X}",interpreter.ms.registers[7].value).PadLeft(2, '0');
+            tbR8.Text = string.Format("{0:X}",interpreter.ms.registers[8].value).PadLeft(2, '0');
+            tbR9.Text = string.Format("{0:X}",interpreter.ms.registers[9].value).PadLeft(2, '0');
+            tbRA.Text = string.Format("{0:X}",interpreter.ms.registers[10].value).PadLeft(2, '0');
+            tbRB.Text = string.Format("{0:X}",interpreter.ms.registers[11].value).PadLeft(2, '0');
+            tbRC.Text = string.Format("{0:X}",interpreter.ms.registers[12].value).PadLeft(2, '0');
+            tbRD.Text = string.Format("{0:X}",interpreter.ms.registers[13].value).PadLeft(2, '0');
+            tbRE.Text = string.Format("{0:X}",interpreter.ms.registers[14].value).PadLeft(2, '0');
+            tbRF.Text = string.Format("{0:X}",interpreter.ms.registers[15].value).PadLeft(2, '0');
+            tbPC.Text = string.Format("{0:X}",(interpreter.programCounter)).PadLeft(2, '0');
+            tbC.Text = string.Format("{0:X}",(interpreter.ms.flags["C"]));
+            tbS.Text = string.Format("{0:X}",(interpreter.ms.flags["S"]));
+            tbZ.Text = string.Format("{0:X}", (interpreter.ms.flags["Z"]));
             stackHeightLbl.Text = string.Format("Stack height: {0}", interpreter.ms.stack.Count);
-            callStackLbl.Text = string.Format("Call stack height: {0}", interpreter.ms.callStack.Count);
-            currentInstructionLbl.Text = string.Format("Current Instruction: {0}   {1}", interpreter.currentInstruction.name, sv.Visible);
-            
-            
+            currentInstructionLbl.Text = string.Format("Current Instruction: {0}", interpreter.currentInstruction.name);    
         }
 
         private void stackViewerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -138,15 +129,6 @@ namespace TitanEmulator {
                 textBox1.Text = result;
                 fileStream.Close();
             }
-        }
-
-        private void toolStripComboBox1_Click(object sender, EventArgs e)
-        {
-            csv.Show();
-        }
-
-        private void Form1_SizeChanged(object sender, EventArgs e) {
-
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e) {

@@ -27,11 +27,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.memoryViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stackViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -82,8 +82,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stackHeightLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.callStackLbl = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.currentInstructionLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
@@ -111,6 +109,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadToolStripMenuItem,
+            this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -123,6 +122,11 @@
             this.loadToolStripMenuItem.Text = "Load assembly...";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(158, 6);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -133,8 +137,7 @@
             // 
             this.windowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.memoryViewerToolStripMenuItem,
-            this.stackViewerToolStripMenuItem,
-            this.toolStripComboBox1});
+            this.stackViewerToolStripMenuItem});
             this.windowToolStripMenuItem.Name = "windowToolStripMenuItem";
             this.windowToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.windowToolStripMenuItem.Text = "Window";
@@ -142,23 +145,16 @@
             // memoryViewerToolStripMenuItem
             // 
             this.memoryViewerToolStripMenuItem.Name = "memoryViewerToolStripMenuItem";
-            this.memoryViewerToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.memoryViewerToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.memoryViewerToolStripMenuItem.Text = "Memory viewer";
             this.memoryViewerToolStripMenuItem.Click += new System.EventHandler(this.memoryViewerToolStripMenuItem_Click);
             // 
             // stackViewerToolStripMenuItem
             // 
             this.stackViewerToolStripMenuItem.Name = "stackViewerToolStripMenuItem";
-            this.stackViewerToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.stackViewerToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.stackViewerToolStripMenuItem.Text = "Stack viewer";
             this.stackViewerToolStripMenuItem.Click += new System.EventHandler(this.stackViewerToolStripMenuItem_Click);
-            // 
-            // toolStripComboBox1
-            // 
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(161, 22);
-            this.toolStripComboBox1.Text = "Call stack viewer";
-            this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
             // 
             // splitContainer1
             // 
@@ -343,7 +339,7 @@
             // tbRF
             // 
             this.tbRF.Enabled = false;
-            this.tbRF.Location = new System.Drawing.Point(150, 188);
+            this.tbRF.Location = new System.Drawing.Point(150, 186);
             this.tbRF.Name = "tbRF";
             this.tbRF.Size = new System.Drawing.Size(44, 20);
             this.tbRF.TabIndex = 31;
@@ -351,7 +347,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(108, 190);
+            this.label16.Location = new System.Drawing.Point(108, 188);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(21, 13);
             this.label16.TabIndex = 30;
@@ -394,7 +390,7 @@
             // tbRC
             // 
             this.tbRC.Enabled = false;
-            this.tbRC.Location = new System.Drawing.Point(150, 113);
+            this.tbRC.Location = new System.Drawing.Point(150, 114);
             this.tbRC.Name = "tbRC";
             this.tbRC.Size = new System.Drawing.Size(44, 20);
             this.tbRC.TabIndex = 25;
@@ -402,7 +398,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(108, 115);
+            this.label13.Location = new System.Drawing.Point(108, 116);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(22, 13);
             this.label13.TabIndex = 24;
@@ -411,7 +407,7 @@
             // tbRB
             // 
             this.tbRB.Enabled = false;
-            this.tbRB.Location = new System.Drawing.Point(150, 89);
+            this.tbRB.Location = new System.Drawing.Point(150, 90);
             this.tbRB.Name = "tbRB";
             this.tbRB.Size = new System.Drawing.Size(44, 20);
             this.tbRB.TabIndex = 23;
@@ -419,7 +415,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(108, 91);
+            this.label12.Location = new System.Drawing.Point(108, 92);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(22, 13);
             this.label12.TabIndex = 22;
@@ -462,7 +458,7 @@
             // tbR8
             // 
             this.tbR8.Enabled = false;
-            this.tbR8.Location = new System.Drawing.Point(150, 19);
+            this.tbR8.Location = new System.Drawing.Point(150, 18);
             this.tbR8.Name = "tbR8";
             this.tbR8.Size = new System.Drawing.Size(44, 20);
             this.tbR8.TabIndex = 17;
@@ -470,7 +466,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(108, 21);
+            this.label9.Location = new System.Drawing.Point(108, 20);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(21, 13);
             this.label9.TabIndex = 16;
@@ -622,8 +618,6 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stackHeightLbl,
             this.toolStripStatusLabel3,
-            this.callStackLbl,
-            this.toolStripStatusLabel4,
             this.currentInstructionLbl});
             this.statusStrip1.Location = new System.Drawing.Point(0, 488);
             this.statusStrip1.Name = "statusStrip1";
@@ -643,19 +637,6 @@
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(10, 19);
             this.toolStripStatusLabel3.Text = "|";
-            // 
-            // callStackLbl
-            // 
-            this.callStackLbl.Name = "callStackLbl";
-            this.callStackLbl.Size = new System.Drawing.Size(118, 17);
-            this.callStackLbl.Text = "toolStripStatusLabel2";
-            // 
-            // toolStripStatusLabel4
-            // 
-            this.toolStripStatusLabel4.Margin = new System.Windows.Forms.Padding(0, 1, 0, 2);
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(10, 19);
-            this.toolStripStatusLabel4.Text = "|";
             // 
             // currentInstructionLbl
             // 
@@ -677,8 +658,7 @@
             this.Controls.Add(this.statusStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
-            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
+            this.Text = "Titan Emulator";
             this.VisibleChanged += new System.EventHandler(this.Form1_VisibleChanged);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.menuStrip1.ResumeLayout(false);
@@ -752,15 +732,13 @@
         private System.Windows.Forms.Label labelV;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel stackHeightLbl;
-        private System.Windows.Forms.ToolStripStatusLabel callStackLbl;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel currentInstructionLbl;
         private System.Windows.Forms.ToolStripMenuItem windowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem memoryViewerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stackViewerToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripComboBox1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 
