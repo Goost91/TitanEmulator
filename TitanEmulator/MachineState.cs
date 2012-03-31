@@ -20,7 +20,7 @@ namespace TitanEmulator {
             stack.Clear();
             for (int i = 0; i < 16; i++) {
                 string reg = i.ToString("X");
-                registers.Add(new Register("R" + reg, 0, i));
+                registers.Add(new Register(0, i));
             }
             flags.Add("Z", 0);
             flags.Add("S", 0);
