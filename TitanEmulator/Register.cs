@@ -5,11 +5,11 @@ using System.Text;
 
 namespace TitanEmulator {
     public class Register {
-        public int value;
+        public byte value;
         public int index;
 
         public Register(int v, int i) {
-            value = v;
+            value = (byte) v;
             index = i;
         }
     }

@@ -11,7 +11,7 @@ namespace TitanEmulator.instructions
         public override void execute(MachineState ms, byte[] parameters) {
             int temp = ms.registers[parameters[1]].value;
             ms.registers[parameters[1]].value = ms.registers[parameters[0]].value;
-            ms.registers[parameters[0]].value = temp;
+            ms.registers[parameters[0]].value = (byte) (temp);
         }
     }
 }

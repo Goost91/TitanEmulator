@@ -10,7 +10,7 @@ namespace TitanEmulator.instructions
         }
 
         public override void execute(MachineState ms, byte[] parameters) {
-            ms.registers[cond].value = ((parameters[0] & 0xF) << 4 | (parameters[1] & 0xF)) & 0xFF;
+            ms.registers[cond].value = (byte) (((parameters[0] & 0xF) << 4 | (parameters[1] & 0xF)) & 0xFF);
         }
         public override bool accept(int opc, int cnd) {
             cond = cnd;

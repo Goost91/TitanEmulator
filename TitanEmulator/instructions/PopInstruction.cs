@@ -10,7 +10,7 @@ namespace TitanEmulator.instructions
         }
 
         public override void execute(MachineState ms, byte[] parameters) {
-            ms.registers[cond].value = ms.stack.Pop();
+            ms.registers[cond].value = (byte) (ms.stack.Pop());
         }
         public override bool accept(int opc, int cnd) {
             cond = cnd;
