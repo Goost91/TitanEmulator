@@ -22,6 +22,7 @@ namespace TitanEmulator {
 
         public void loadAssembly(string instructions) {
             if (instructions.Equals(assemblyString)) return;
+            instructions = instructions.Replace(" ", string.Empty);
             List<byte> result = new List<byte>();
             for (int i = 0; i < instructions.Length - 1; i += 2) {
                 string chr = instructions.Substring(i, 2);
@@ -71,7 +72,6 @@ namespace TitanEmulator {
                 programCounter += currentInstruction.length;
             } else {
                 programCounter = instr.execute(ms, operands.ToArray(), programCounter);
-
             }
         }
 

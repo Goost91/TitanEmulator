@@ -23,6 +23,7 @@ namespace TitanEmulator {
             openFileDialog1.Filter = "Titan Assemblies (*.hex)|*.hex";
         }
 
+
         private void timer1_Tick(object sender, EventArgs e) {
             doCycle();
         }
@@ -123,7 +124,11 @@ namespace TitanEmulator {
                 string result = "";
                 using (System.IO.StreamReader reader = new System.IO.StreamReader(fileStream)) {
                     // Read the first line from the file and write it the textbox.
-                    result += reader.ReadToEnd();
+                    while (!reader.EndOfStream) {
+                        char inChar = (char) reader.Read();
+                        if (isValidAssemblyChar(inChar))
+                            result += inChar;
+                    }
                 }
                 textBox1.Text = result;
                 fileStream.Close();
@@ -137,6 +142,23 @@ namespace TitanEmulator {
 
         private void Form1_SizeChanged(object sender, EventArgs e) {
 
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e) {
+         /*   char[] validKeys = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', ' ' };
+            if (!validKeys.Contains((char)e.KeyValue)) {
+                e.Handled = true;
+            }*/
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e) {
+            if (!isValidAssemblyChar(e.KeyChar))
+                e.Handled = true;
+        }
+
+
+        public static bool isValidAssemblyChar(char c) {
+            return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F') || c == ' ';
         }
 
 
