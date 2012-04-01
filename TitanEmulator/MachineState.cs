@@ -8,7 +8,8 @@ namespace TitanEmulator {
         public List<Register> registers = new List<Register>(16);
         public Dictionary<string, int> flags = new Dictionary<string, int>();
         public Stack<int> stack = new Stack<int>();
-        public int[] memory = new int[0xFFFF];
+        public byte[] memory = new byte[0xFFFF];
+        public bool running = false;
 
         public MachineState() {
             reset();

@@ -12,12 +12,16 @@ namespace TitanEmulator {
     public partial class Form1 : Form {
         Interpreter interpreter = new Interpreter();
         StackViewer sv;
+        MemoryViewer mv;
+
         public Form1() {
             InitializeComponent();
             interpreter.loadAssembly();
             textBox1.Text = interpreter.assemblyString;
             sv = new StackViewer();
+            mv = new MemoryViewer();
             sv.setMachineState(interpreter.ms);
+            mv.setMachineState(interpreter.ms);
             UpdateRegisterViews();
             openFileDialog1.Filter = "Titan Assemblies (*.hex)|*.hex";
         }
@@ -54,11 +58,15 @@ namespace TitanEmulator {
             if (button1.Text.Equals("Run")) {
                 timer1.Start();
                 sv.update(interpreter.ms);
+                mv.setMachineState(interpreter.ms);
                 button1.Text = "Stop";
+                interpreter.ms.running = true;
             } else if(button1.Text.Equals("Stop")) {
                 timer1.Stop();
                 button1.Text = "Run";
                 sv.timer1.Stop();
+                interpreter.ms.running = false;
+                mv.timer1.Stop();
             }
         }
 
@@ -151,7 +159,7 @@ namespace TitanEmulator {
         }
 
         private void memoryViewerToolStripMenuItem_Click(object sender, EventArgs e) {
-
+            mv.Show();
         }
 
 

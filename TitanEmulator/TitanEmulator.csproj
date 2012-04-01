@@ -52,6 +52,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GoToDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoToDialog.Designer.cs">
+      <DependentUpon>GoToDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="instructions\AdcInstruction.cs" />
     <Compile Include="instructions\AddInstruction.cs" />
     <Compile Include="instructions\AndInstruction.cs" />
@@ -79,6 +85,12 @@
     <Compile Include="instructions\XorInstruction.cs" />
     <Compile Include="Interpreter.cs" />
     <Compile Include="MachineState.cs" />
+    <Compile Include="MemoryViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemoryViewer.Designer.cs">
+      <DependentUpon>MemoryViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.cs" />
@@ -90,6 +102,12 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoToDialog.resx">
+      <DependentUpon>GoToDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemoryViewer.resx">
+      <DependentUpon>MemoryViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -112,6 +130,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BeHexEditor\sources\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj">
+      <Project>{26C5F25F-B450-4CAF-AD8B-B8D11AE73457}</Project>
+      <Name>Be.Windows.Forms.HexBox</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
