@@ -64,6 +64,7 @@
     <Compile Include="instructions\JpzInstruction.cs" />
     <Compile Include="instructions\JsrInstruction.cs" />
     <Compile Include="instructions\LdcInstruction.cs" />
+    <Compile Include="instructions\LdmInstruction.cs" />
     <Compile Include="instructions\LorInstruction.cs" />
     <Compile Include="instructions\MovInstruction.cs" />
     <Compile Include="instructions\NopInstruction.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="instructions\PshInstruction.cs" />
     <Compile Include="instructions\RtnInstruction.cs" />
     <Compile Include="instructions\ShrInstruction.cs" />
+    <Compile Include="instructions\StmInstruction.cs" />
     <Compile Include="instructions\SubInstruction.cs" />
     <Compile Include="instructions\XchInstruction.cs" />
     <Compile Include="instructions\XorInstruction.cs" />

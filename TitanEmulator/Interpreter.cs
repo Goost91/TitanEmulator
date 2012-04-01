@@ -98,6 +98,8 @@ namespace TitanEmulator {
             instructions.Add(new JpiInstruction());
             instructions.Add(new JsrInstruction());
             instructions.Add(new RtnInstruction());
+            instructions.Add(new StmInstruction());
+            instructions.Add(new LdmInstruction());
         }
 
         public void reset() {
