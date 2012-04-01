@@ -99,7 +99,8 @@ namespace TitanEmulator {
             tbS.Text = string.Format("{0:X}",(interpreter.ms.flags["S"]));
             tbZ.Text = string.Format("{0:X}", (interpreter.ms.flags["Z"]));
             stackHeightLbl.Text = string.Format("Stack height: {0}", interpreter.ms.stack.Count);
-            currentInstructionLbl.Text = string.Format("Current Instruction: {0}", interpreter.currentInstruction.name);    
+            currentInstructionLbl.Text = string.Format("Current Instruction: {0}", interpreter.currentInstruction.name);
+            mv.setMachineState(interpreter.ms);
         }
 
         private void stackViewerToolStripMenuItem_Click(object sender, EventArgs e)

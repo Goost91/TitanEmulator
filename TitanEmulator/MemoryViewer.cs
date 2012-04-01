@@ -24,10 +24,10 @@ namespace TitanEmulator {
 
         public void setMachineState(MachineState ms) {
             this.ms = ms;
-            if (dbp == null) {
+            //if (dbp == null) {
                 dbp = new DynamicByteProvider(ms.memory);
                 hexBox1.ByteProvider = dbp;
-            }
+            //}
 
             //hexEditBox1.LoadData(ms.memory);
             if (!timer1.Enabled && Visible) timer1.Start();
