@@ -35,10 +35,7 @@ namespace TitanEmulator {
             assembly = result.ToArray();
         }
 
-        public void fetchNextInstruction() {
-        }
-
-        public Instruction decodeInstruction() {
+        public Instruction fetchAndDecodeInstruction() {
             int high = readHighNibble(assembly[programCounter]);
             int low = readLowNibble(assembly[programCounter]);
             currentInstruction = instructions.FirstOrDefault(instr => instr.accept(high, low)) ?? new Instruction();

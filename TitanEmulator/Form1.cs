@@ -32,11 +32,8 @@ namespace TitanEmulator {
                 btnRun.Text = "Run";
                 return;
             }
-            // fetch instruction
-            interpreter.fetchNextInstruction();
-            // decode instruction
-            Instruction ins = interpreter.decodeInstruction();
-            UpdateRegisterViews();
+            // fetch and decode decode instruction
+            Instruction ins = interpreter.fetchAndDecodeInstruction();
             // execute instruction
             interpreter.executeInstruction(ins);
             UpdateRegisterViews();
