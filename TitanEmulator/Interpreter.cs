@@ -12,7 +12,6 @@ namespace TitanEmulator {
         public List<Instruction> instructions = new List<Instruction>();
         public Instruction currentInstruction;
         public MachineState ms = new MachineState();
-        private bool first = true;
 
         public void loadAssembly() {
             //currentInstruction = instructions.Where(i => i.opcode == readLowNibble(assembly[0]) && i.cond == readHighNibble(assembly[1])).First();
@@ -43,16 +42,15 @@ namespace TitanEmulator {
         public Instruction decodeInstruction() {
             int high = readHighNibble(assembly[programCounter]);
             int low = readLowNibble(assembly[programCounter]);
-            Instruction ins = instructions.FirstOrDefault(instr => instr.accept(high, low));
-            currentInstruction = ins ?? new Instruction();
-            return ins;
+            currentInstruction = instructions.FirstOrDefault(instr => instr.accept(high, low)) ?? new Instruction();
+            return currentInstruction;
         }
 
-        private static byte readHighNibble(byte n) {
+        public static byte readHighNibble(byte n) {
             return (byte)((n >> 4) & 0xF);
         }
 
-        private static byte readLowNibble(byte n) {
+        public static byte readLowNibble(byte n) {
             return (byte)(n & 0xF);
         }
 
@@ -105,9 +103,6 @@ namespace TitanEmulator {
         public void reset() {
             ms.reset();
             programCounter = 0;
-            
-            //loadAssembly();
-            first = true;
         }
     }
 }

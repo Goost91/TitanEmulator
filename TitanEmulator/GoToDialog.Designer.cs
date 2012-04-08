@@ -23,23 +23,23 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numByte = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.btnGo = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.numByte)).BeginInit();
             this.SuspendLayout();
             // 
-            // numericUpDown1
+            // numByte
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(75, 7);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numByte.Location = new System.Drawing.Point(75, 7);
+            this.numByte.Maximum = new decimal(new int[] {
             65535,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 0;
+            this.numByte.Name = "numByte";
+            this.numByte.Size = new System.Drawing.Size(120, 20);
+            this.numByte.TabIndex = 0;
             // 
             // label1
             // 
@@ -50,27 +50,27 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Byte number:";
             // 
-            // button1
+            // btnGo
             // 
-            this.button1.Location = new System.Drawing.Point(213, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Go";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnGo.Location = new System.Drawing.Point(213, 5);
+            this.btnGo.Name = "btnGo";
+            this.btnGo.Size = new System.Drawing.Size(75, 23);
+            this.btnGo.TabIndex = 2;
+            this.btnGo.Text = "Go";
+            this.btnGo.UseVisualStyleBackColor = true;
+            this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
             // 
             // GoToDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 35);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnGo);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.numByte);
             this.Name = "GoToDialog";
             this.Text = "Go to byte";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numByte)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -78,8 +78,8 @@
 
         #endregion
 
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numByte;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGo;
     }
 }

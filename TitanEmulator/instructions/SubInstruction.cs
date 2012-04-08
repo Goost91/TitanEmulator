@@ -14,7 +14,6 @@ namespace TitanEmulator.instructions {
             ms.flags["S"] = res >> 4 > 0x8 ? 1 : 0;
             ms.flags["Z"] = res == 0 ? 1 : 0;
             if(res < 0) {
-                //res = 0xFF - (res + 1) & 0xFF;
                 ms.flags["C"] = 1;
             }
             ms.registers[parameters[1]].value = (byte) (res);

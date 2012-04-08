@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace TitanEmulator {
@@ -14,12 +8,11 @@ namespace TitanEmulator {
         }
 
         public int getByteIndex() {
-            return (int)numericUpDown1.Value - 1;
+            return (int)numByte.Value - 1;
         }
 
-        private void button1_Click(object sender, EventArgs e) {
+        private void btnGo_Click(object sender, EventArgs e) {
             DialogResult = DialogResult.OK;
-            
         }
     }
 }

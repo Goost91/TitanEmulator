@@ -4,7 +4,6 @@ namespace TitanEmulator.instructions
 
         public LdcInstruction() {
             opcode = 0xD;
-            //cond = 0x1;
             name = "LDC";
             length = 2;
         }

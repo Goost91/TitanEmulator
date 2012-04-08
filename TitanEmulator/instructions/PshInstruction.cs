@@ -4,7 +4,6 @@ namespace TitanEmulator.instructions
 
         public PshInstruction() {
             opcode = 0x7;
-            //cond = 0x1;
             name = "PSH";
             length = 1;
         }

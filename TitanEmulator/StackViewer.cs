@@ -10,31 +10,18 @@ using System.Windows.Forms;
 namespace TitanEmulator {
     public partial class StackViewer : Form {
         private MachineState ms;
-        private int updateCounter = 0;
+        private int updateCounter;
+
         public StackViewer() {
             InitializeComponent();
             TopMost = true;
         }
 
         public void update(MachineState ms) {
+            if (updateCounter++ < 15) return;
             if (!timer1.Enabled && Visible) timer1.Start();
-            if (updateCounter++ >= 15) {
-                reset();
-                int i = 0;
-                foreach (int value in ms.stack) {
-                    string[] row = { string.Format("{0:X}", i).PadLeft(4, '0'), string.Format("{0:X}", value).PadLeft(4, '0') };
-                    dataGridView1.Rows.Add(row);
-
-                    ++i;
-                    updateCounter = 0;
-
-                }
-            }
-        }
-
-        private void StackViewer_Resize(object sender, EventArgs e)
-        {
-            dataGridView1.Size = this.Size - new Size(8,13);
+            
+            reset(ms);
         }
 
         private void StackViewer_FormClosing(object sender, FormClosingEventArgs e)
@@ -42,9 +29,18 @@ namespace TitanEmulator {
             Hide();
             e.Cancel = true;
         }
-        public void reset()
+
+        public void reset(MachineState ms)
         {
             dataGridView1.Rows.Clear();
+            int i = 0;
+            foreach (int value in ms.stack) {
+                object[] row = { string.Format("{0:X}", i).PadLeft(4, '0'), string.Format("{0:X}", value).PadLeft(4, '0') };
+                dataGridView1.Rows.Add(row);
+
+                ++i;
+                updateCounter = 0;
+            }
         }
 
         private void StackViewer_SizeChanged(object sender, EventArgs e) {

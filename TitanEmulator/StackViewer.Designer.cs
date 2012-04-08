@@ -85,7 +85,6 @@
             this.Text = "Stack Viewer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StackViewer_FormClosing);
             this.SizeChanged += new System.EventHandler(this.StackViewer_SizeChanged);
-            this.Resize += new System.EventHandler(this.StackViewer_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

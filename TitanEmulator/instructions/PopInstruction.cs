@@ -4,7 +4,6 @@ namespace TitanEmulator.instructions
 
         public PopInstruction() {
             opcode = 0x8;
-            //cond = 0x1;
             name = "POP";
             length = 1;
         }

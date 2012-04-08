@@ -3,7 +3,6 @@ namespace TitanEmulator.instructions {
 
         public StmInstruction() {
             opcode = 0xF;
-            //cond = 0x4;
             name = "STM";
             length = 3;
         }

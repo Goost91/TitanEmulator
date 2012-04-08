@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace TitanEmulator {
     public class MachineState {
@@ -19,13 +16,18 @@ namespace TitanEmulator {
             registers.Clear();
             flags.Clear();
             stack.Clear();
+
             for (int i = 0; i < 16; i++) {
-                string reg = i.ToString("X");
-                registers.Add(new Register(0, i));
+                registers.Add(new Register(i, i));
             }
+
             flags.Add("Z", 0);
             flags.Add("S", 0);
             flags.Add("C", 0);
+            for(int i = 0; i< memory.Length; i++ )
+            {
+                memory[i] = (byte)i;
+            }
         }
     }
 }
