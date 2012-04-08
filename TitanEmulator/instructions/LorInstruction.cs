@@ -1,5 +1,3 @@
-using System;
-
 namespace TitanEmulator.instructions {
     class LorInstruction : Instruction {
 

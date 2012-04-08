@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace TitanEmulator {
+﻿namespace TitanEmulator {
     public class Register {
         public byte value;
         public int index;

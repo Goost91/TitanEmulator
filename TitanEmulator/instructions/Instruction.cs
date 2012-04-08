@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace TitanEmulator.instructions {
+﻿namespace TitanEmulator.instructions {
     public class Instruction {
         public int length = 1;
         public int opcode = 0x8; // Set opcode to unused, same with cond
