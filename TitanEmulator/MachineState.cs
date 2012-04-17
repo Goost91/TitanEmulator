@@ -7,6 +7,9 @@ namespace TitanEmulator {
         public Stack<int> stack = new Stack<int>();
         public byte[] memory = new byte[0xFFFF];
         public bool running = false;
+        public string inputBuffer;
+        public string outputBuffer;
+        public string terminalOutput;
 
         public MachineState() {
             reset();

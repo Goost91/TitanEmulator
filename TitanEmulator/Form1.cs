@@ -8,17 +8,22 @@ namespace TitanEmulator {
         Interpreter interpreter = new Interpreter();
         StackViewer sv;
         MemoryViewer mv;
+        TerminalWindow tw;
 
         public Form1() {
             InitializeComponent();
+
             interpreter.loadAssembly();
             tbInput.Text = interpreter.assemblyString;
+
             sv = new StackViewer();
             mv = new MemoryViewer();
+            tw = new TerminalWindow();
             sv.setMachineState(interpreter.ms);
             mv.setMachineState(interpreter.ms);
+            tw.setMachineState(interpreter.ms);
+            tw.Show();
             UpdateRegisterViews();
-            openFileDialog1.Filter = "Titan Assemblies (*.hex)|*.hex";
         }
 
 
@@ -40,29 +45,33 @@ namespace TitanEmulator {
         }
 
         private void UpdateRegisterViews() {
-            tbR0.Text = string.Format("{0:X}", interpreter.ms.registers[0].value).PadLeft(2, '0');
-            tbR1.Text = string.Format("{0:X}", interpreter.ms.registers[1].value).PadLeft(2, '0');
-            tbR2.Text = string.Format("{0:X}", interpreter.ms.registers[2].value).PadLeft(2, '0');
-            tbR3.Text = string.Format("{0:X}", interpreter.ms.registers[3].value).PadLeft(2, '0');
-            tbR4.Text = string.Format("{0:X}", interpreter.ms.registers[4].value).PadLeft(2, '0');
-            tbR5.Text = string.Format("{0:X}", interpreter.ms.registers[5].value).PadLeft(2, '0');
-            tbR6.Text = string.Format("{0:X}", interpreter.ms.registers[6].value).PadLeft(2, '0');
-            tbR7.Text = string.Format("{0:X}", interpreter.ms.registers[7].value).PadLeft(2, '0');
-            tbR8.Text = string.Format("{0:X}", interpreter.ms.registers[8].value).PadLeft(2, '0');
-            tbR9.Text = string.Format("{0:X}", interpreter.ms.registers[9].value).PadLeft(2, '0');
-            tbRA.Text = string.Format("{0:X}", interpreter.ms.registers[10].value).PadLeft(2, '0');
-            tbRB.Text = string.Format("{0:X}", interpreter.ms.registers[11].value).PadLeft(2, '0');
-            tbRC.Text = string.Format("{0:X}", interpreter.ms.registers[12].value).PadLeft(2, '0');
-            tbRD.Text = string.Format("{0:X}", interpreter.ms.registers[13].value).PadLeft(2, '0');
-            tbRE.Text = string.Format("{0:X}", interpreter.ms.registers[14].value).PadLeft(2, '0');
-            tbRF.Text = string.Format("{0:X}", interpreter.ms.registers[15].value).PadLeft(2, '0');
-            tbPC.Text = string.Format("{0:X}", (interpreter.programCounter)).PadLeft(2, '0');
+            tbR0.Text = formatField(interpreter.ms.registers[0].value);
+            tbR1.Text = formatField(interpreter.ms.registers[1].value);
+            tbR2.Text = formatField(interpreter.ms.registers[2].value);
+            tbR3.Text = formatField(interpreter.ms.registers[3].value);
+            tbR4.Text = formatField(interpreter.ms.registers[4].value);
+            tbR5.Text = formatField(interpreter.ms.registers[5].value);
+            tbR6.Text = formatField(interpreter.ms.registers[6].value);
+            tbR7.Text = formatField(interpreter.ms.registers[7].value);
+            tbR8.Text = formatField(interpreter.ms.registers[8].value);
+            tbR9.Text = formatField(interpreter.ms.registers[9].value);
+            tbRA.Text = formatField(interpreter.ms.registers[10].value);
+            tbRB.Text = formatField(interpreter.ms.registers[11].value);
+            tbRC.Text = formatField(interpreter.ms.registers[12].value);
+            tbRD.Text = formatField(interpreter.ms.registers[13].value);
+            tbRE.Text = formatField(interpreter.ms.registers[14].value);
+            tbRF.Text = formatField(interpreter.ms.registers[15].value);
+            tbPC.Text = formatField(interpreter.programCounter);
             tbC.Text = string.Format("{0:X}", (interpreter.ms.flags["C"]));
             tbS.Text = string.Format("{0:X}", (interpreter.ms.flags["S"]));
             tbZ.Text = string.Format("{0:X}", (interpreter.ms.flags["Z"]));
             stackHeightLbl.Text = string.Format("Stack height: {0}", interpreter.ms.stack.Count);
             currentInstructionLbl.Text = string.Format("Current Instruction: {0}", interpreter.currentInstruction.name);
             mv.setMachineState(interpreter.ms);
+        }
+
+        private static string formatField(int value) {
+            return string.Format("{0:X}", value).PadLeft(2, '0');
         }
 
         private void btnReset_Click(object sender, EventArgs e) {

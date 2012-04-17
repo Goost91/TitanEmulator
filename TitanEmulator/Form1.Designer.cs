@@ -646,6 +646,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "Titan Assemblies (*.hex)|*.hex";
             // 
             // Form1
             // 
